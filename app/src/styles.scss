@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+@import "primeicons/primeicons.css";
+/* CSS Layer order for PrimeNG + Tailwind v3 integration */
+@layer tailwind-base, primeng, tailwind-utilities;
+
+@layer tailwind-base {
+  @tailwind base;
+}
+
+@layer tailwind-utilities {
+  @tailwind components;
+  @tailwind utilities;
+}
+
+/* Global styles */
+:root {
+  color-scheme: light;
+}
+
+:root.dark {
+  color-scheme: dark;
+}
+
