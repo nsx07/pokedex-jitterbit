@@ -13,6 +13,11 @@ export class PokemonController {
     return this.pokemonService.getPaginated(Number(limit), Number(offset));
   }
 
+  @Get('search')
+  searchPokemon(@Query('q') query: string) {
+    return this.pokemonService.searchPokemon(query);
+  }
+
   @Get(':name')
   getPokemonByName(@Param('name') name: string) {
     return this.pokemonService.getPokemonByName(name);
