@@ -5,6 +5,7 @@ FROM base AS pruned
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci --only=production --no-audit --no-fund
+RUN apk add --no-cache curl
 RUN curl -sf https://gobinaries.com/tj/node-prune | sh
 RUN node-prune
 EXPOSE 3000
@@ -12,7 +13,7 @@ EXPOSE 3000
 FROM base AS development
 WORKDIR /app
 COPY ./src ./src
-COPY package.json package-lock.json tsconfig.build.json tsconfig.json .eslintrc.js .prettierrc ./
+COPY package.json package-lock.json tsconfig.build.json tsconfig.json ./
 RUN npm ci --no-audit --no-fund
 RUN npm run build
 EXPOSE 3000
